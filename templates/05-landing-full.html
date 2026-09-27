@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aurora Capital — AI 驱动的财富洞察</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@400;500;600&family=Noto+Serif+SC:wght@400;500;600&family=Noto+Sans+SC:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/base.css">
+<style>
+  /* demo-specific composition */
+  .nav {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 28px 40px; position: sticky; top: 0;
+    background: rgba(244,242,238,.85); backdrop-filter: blur(12px); z-index: 10;
+  }
+  .nav-logo { font-family: var(--font-display); font-size: 22px; font-weight: 600; letter-spacing: -0.02em; }
+  .nav-links { display: flex; gap: 36px; font-size: 14px; }
+  .nav-links a { color: var(--ink-soft); text-decoration: none; }
+  .nav-links a:hover { color: var(--ink); }
+
+  .hero-headline { grid-column: 1 / 9; position: relative; z-index: 3; }
+  .hero-media {
+    grid-column: 8 / 13; grid-row: 1;
+    aspect-ratio: 4/5; align-self: end;
+    margin-top: 18%; z-index: 2;
+    background: var(--dusty-blue);
+    display: flex; align-items: flex-end; padding: 32px;
+  }
+  .hero-media .sv-micro { color: rgba(26,26,26,.55); }
+  .hero-foot {
+    grid-column: 1 / 13; display: flex; justify-content: space-between;
+    align-items: center; margin-top: 72px;
+    padding-top: 28px; border-top: 1px solid var(--hairline);
+  }
+
+  .feed-item { display: grid; grid-template-columns: repeat(12,1fr); gap: 24px; align-items: center; margin-bottom: 120px; }
+  .feed-text { grid-column: 1 / 6; }
+  .feed-img { grid-column: 7 / 12; aspect-ratio: 3/2; background: var(--sage); padding: 36px; display:flex; align-items:flex-end; }
+  .feed-item:nth-of-type(2) .feed-text { grid-column: 8 / 13; order: 2; }
+  .feed-item:nth-of-type(2) .feed-img { grid-column: 2 / 7; order: 1; background: var(--blush); aspect-ratio: 4/5; }
+  .feed-item:nth-of-type(3) .feed-text { grid-column: 2 / 7; }
+  .feed-item:nth-of-type(3) .feed-img { grid-column: 8 / 13; background: var(--terracotta); aspect-ratio: 1/1; }
+  .feed-index { font-family: var(--font-display); font-size: 72px; line-height: 1; color: transparent; -webkit-text-stroke: 1px var(--hairline); display:block; margin-bottom: 20px; }
+  .feed-text p { color: var(--ink-soft); max-width: 40ch; margin: 20px 0 28px; }
+  .feed-text h3 { font-family: var(--font-display); font-size: clamp(1.8rem,3vw,2.6rem); font-weight: 500; letter-spacing: -0.02em; }
+
+  .stats { background: var(--night); color: var(--paper-on-night); border-radius: 32px; margin: 0 24px; }
+  .stats .sv-container { padding: clamp(80px,10vw,140px) 24px; }
+  .stats .sv-kicker, .stats .sv-micro { color: rgba(237,234,228,.55); }
+  .stats-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; margin-top: 80px; }
+  .stat-cell { border-top: 1px solid var(--hairline-dark); padding-top: 28px; }
+  .stat-cell p { color: rgba(237,234,228,.6); font-size: 14px; max-width: 28ch; margin-top: 12px; }
+
+  .cards-row { display: grid; grid-template-columns: repeat(12,1fr); gap: 24px; margin-top: 88px; }
+  .cards-row .sv-card:nth-child(1) { grid-column: 1/5; }
+  .cards-row .sv-card:nth-child(2) { grid-column: 5/9; transform: translateY(48px); }
+  .cards-row .sv-card:nth-child(3) { grid-column: 9/13; }
+  .sv-card h4 { font-family: var(--font-display); font-size: 26px; font-weight: 500; margin-bottom: 8px; }
+  .sv-card p { font-size: 14px; color: rgba(26,26,26,.6); }
+
+  .cta-final { text-align: center; padding: clamp(100px,14vw,200px) 24px; position: relative; }
+  .cta-final .sv-display { margin: 24px 0 40px; }
+
+  footer { padding: 40px; display: flex; justify-content: space-between; border-top: 1px solid var(--hairline); font-size: 13px; color: var(--ink-soft); }
+
+  @media (max-width: 860px) {
+    .hero-headline { grid-column: 1/13; }
+    .hero-media { grid-column: 3/13; margin-top: 40px; }
+    .feed-text, .feed-img, .feed-item:nth-of-type(2) .feed-text, .feed-item:nth-of-type(2) .feed-img,
+    .feed-item:nth-of-type(3) .feed-text, .feed-item:nth-of-type(3) .feed-img { grid-column: 1/13; order: initial; }
+    .stats-grid { grid-template-columns: 1fr; }
+    .cards-row .sv-card { grid-column: 1/13 !important; transform: none !important; }
+    .nav-links { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-logo">Aurora<span style="color:var(--accent)">.</span></div>
+  <div class="nav-links">
+    <a href="#product">产品</a><a href="#numbers">数据</a><a href="#features">能力</a><a href="#contact">联系我们</a>
+  </div>
+  <a class="sv-btn" href="#contact">预约演示</a>
+</nav>
+
+<!-- HERO -->
+<section class="sv-section">
+  <div class="sv-container sv-grid">
+    <span class="sv-outline-word" style="top:-40px; left:-20px;">Aurora</span>
+    <div class="hero-headline">
+      <div class="sv-kicker">01 — AI Wealth Intelligence</div>
+      <h1 class="sv-display" style="margin-top: 32px;">
+        让每一笔资产<br>都被 <em>智能</em> 看见
+      </h1>
+      <p style="max-width: 44ch; color: var(--ink-soft); margin-top: 28px;">
+        Aurora Capital 用多模态大模型重构资产配置流程，为机构与高净值客户提供安静、准确、可解释的财富洞察。
+      </p>
+      <div style="display:flex; gap:16px; margin-top: 36px;">
+        <a class="sv-btn sv-btn--accent" href="#contact">开始使用</a>
+        <a class="sv-btn" href="#product">了解产品 →</a>
+      </div>
+    </div>
+    <div class="hero-media sv-media">
+      <span class="sv-micro">Portfolio · Real-time · 2026</span>
+    </div>
+    <div class="hero-foot">
+      <span class="sv-micro">服务 120+ 机构客户</span>
+      <span class="sv-micro">AUM 超 ¥80 亿</span>
+      <span class="sv-micro">SOC2 · 等保三级</span>
+    </div>
+    <span class="sv-vertical">SCROLL — 向下探索</span>
+  </div>
+</section>
+
+<!-- EDITORIAL FEED -->
+<section class="sv-section" id="product" style="padding-top: 40px;">
+  <div class="sv-container">
+    <div class="sv-kicker" style="margin-bottom: 80px;">02 — 产品叙事</div>
+
+    <div class="feed-item">
+      <div class="feed-text">
+        <span class="feed-index">01</span>
+        <h3>组合诊断，<br>一句话说清风险</h3>
+        <p>不再翻阅 40 页研报。模型将持仓敞口、相关性断裂与尾部风险压缩成三段可读结论，并标注每一处推理来源。</p>
+        <a class="sv-btn" href="#">查看示例</a>
+      </div>
+      <div class="feed-img sv-media"><span class="sv-micro">Risk Brief · 08:30 推送</span></div>
+    </div>
+
+    <div class="feed-item">
+      <div class="feed-text">
+        <span class="feed-index">02</span>
+        <h3>市场异动，<br>先于情绪抵达</h3>
+        <p>跨资产信号引擎以分钟级频率扫描 12 个市场，只在信噪比足够高时打扰你——平均每天不超过 3 条。</p>
+        <a class="sv-btn" href="#">信号档案</a>
+      </div>
+      <div class="feed-img sv-media"><span class="sv-micro">Signal Engine · 12 Markets</span></div>
+    </div>
+
+    <div class="feed-item">
+      <div class="feed-text">
+        <span class="feed-index">03</span>
+        <h3>合规报告，<br>从三天到三分钟</h3>
+        <p>季报、尽调问卷与监管披露由模型起草、人工复核。格式即模板，数据即事实，措辞即合规。</p>
+        <a class="sv-btn" href="#">了解流程</a>
+      </div>
+      <div class="feed-img sv-media"><span class="sv-micro">Compliance · Auto Draft</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS (dark) -->
+<section class="stats" id="numbers">
+  <div class="sv-container">
+    <div class="sv-kicker">03 — 安静的数据</div>
+    <h2 class="sv-h2" style="margin-top: 28px; max-width: 18ch;">不喧哗的数字，<br>自有<em style="font-style:italic; color:var(--accent)">分量</em></h2>
+    <div class="stats-grid">
+      <div class="stat-cell">
+        <div class="sv-stat-num">98.2<span style="font-size:.4em">%</span></div>
+        <p>风险结论经人工复核后的一致率</p>
+      </div>
+      <div class="stat-cell">
+        <div class="sv-stat-num">3<span style="font-size:.4em">条</span></div>
+        <p>每日平均推送的高信噪比信号</p>
+      </div>
+      <div class="stat-cell">
+        <div class="sv-stat-num">¥80<span style="font-size:.4em">亿+</span></div>
+        <p>接入平台管理的资产规模</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CARDS -->
+<section class="sv-section" id="features">
+  <div class="sv-container">
+    <div class="sv-kicker">04 — 三种角色</div>
+    <div class="cards-row">
+      <div class="sv-card sv-card--sage">
+        <h4>投资经理</h4>
+        <p>组合视图、归因拆解与再平衡建议，一屏之内。</p>
+      </div>
+      <div class="sv-card sv-card--dusty">
+        <h4>风控合规</h4>
+        <p>敞口监控与披露文档，全程留痕可审计。</p>
+      </div>
+      <div class="sv-card sv-card--terra">
+        <h4>客户顾问</h4>
+        <p>把复杂结论翻译成客户听得懂的一段话。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="cta-final" id="contact">
+  <span class="sv-outline-word" style="top:50%; left:50%; transform:translate(-50%,-50%);">Calm</span>
+  <div style="position:relative; z-index:2;">
+    <div class="sv-kicker" style="justify-content:center;">05 — 开始</div>
+    <h2 class="sv-display">财富管理的<br><em>安静</em>革命</h2>
+    <a class="sv-btn sv-btn--accent" href="#" style="font-size:15px; padding:16px 36px;">预约 30 分钟演示</a>
+  </div>
+</section>
+
+<footer>
+  <span>© 2026 Aurora Capital</span>
+  <span>Designed in Slava style · Demo</span>
+</footer>
+
+</body>
+</html>

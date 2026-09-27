@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>01 · Hero Editorial — Slava Style</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;1,400;1,500&family=Inter:wght@400;500&family=Noto+Serif+SC:wght@400;500;600&family=Noto+Sans+SC:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/base.css">
+<style>
+  .nav { display:flex; justify-content:space-between; align-items:center; padding:28px 40px; }
+  .nav-logo { font-family:var(--font-display); font-size:22px; font-weight:600; }
+  .nav-links { display:flex; gap:36px; font-size:14px; }
+  .nav-links a { color:var(--ink-soft); text-decoration:none; }
+  .hero-headline { grid-column:1/9; position:relative; z-index:3; }
+  .hero-media { grid-column:8/13; grid-row:1; aspect-ratio:4/5; align-self:end; margin-top:18%; background:var(--dusty-blue); display:flex; align-items:flex-end; padding:32px; }
+  .hero-foot { grid-column:1/13; display:flex; justify-content:space-between; margin-top:72px; padding-top:28px; border-top:1px solid var(--hairline); }
+</style>
+</head>
+<body>
+<nav class="nav">
+  <div class="nav-logo">Aurora<span style="color:var(--accent)">.</span></div>
+  <div class="nav-links"><a href="#">产品</a><a href="#">数据</a><a href="#">能力</a><a href="#">联系</a></div>
+  <a class="sv-btn" href="#">预约演示</a>
+</nav>
+<section class="sv-section" style="padding-top:60px;">
+  <div class="sv-container sv-grid">
+    <span class="sv-outline-word" style="top:-40px;left:-20px;">Aurora</span>
+    <div class="hero-headline">
+      <div class="sv-kicker">01 — AI Wealth Intelligence</div>
+      <h1 class="sv-display" style="margin-top:32px;">让每一笔资产<br>都被 <em>智能</em> 看见</h1>
+      <p style="max-width:44ch;color:var(--ink-soft);margin-top:28px;">用多模态大模型重构资产配置流程，为机构与高净值客户提供安静、准确、可解释的财富洞察。</p>
+      <div style="display:flex;gap:16px;margin-top:36px;">
+        <a class="sv-btn sv-btn--accent" href="#">开始使用</a>
+        <a class="sv-btn" href="#">了解产品 →</a>
+      </div>
+    </div>
+    <div class="hero-media sv-media"><span class="sv-micro">Portfolio · Real-time</span></div>
+    <div class="hero-foot">
+      <span class="sv-micro">服务 120+ 机构客户</span><span class="sv-micro">AUM 超 ¥80 亿</span><span class="sv-micro">SOC2 · 等保三级</span>
+    </div>
+    <span class="sv-vertical">SCROLL — 向下探索</span>
+  </div>
+</section>
+</body>
+</html>

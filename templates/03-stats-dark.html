@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>03 · Stats Dark — Slava Style</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;1,400&family=Inter:wght@400;500&family=Noto+Serif+SC:wght@400;500;600&family=Noto+Sans+SC:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/base.css">
+<style>
+  body { background: var(--paper); padding: 40px 24px; }
+  .stats { background:var(--night); color:var(--paper-on-night); border-radius:32px; }
+  .stats .sv-container { padding:clamp(80px,10vw,130px) clamp(32px,6vw,80px); }
+  .stats .sv-kicker, .stats .sv-micro { color:rgba(237,234,228,.55); }
+  .stats-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; margin-top:72px; }
+  .stat-cell { border-top:1px solid var(--hairline-dark); padding-top:28px; }
+  .stat-cell p { color:rgba(237,234,228,.6); font-size:14px; max-width:28ch; margin-top:12px; }
+</style>
+</head>
+<body>
+<section class="stats">
+  <div class="sv-container">
+    <div class="sv-kicker">03 — 安静的数据</div>
+    <h2 class="sv-h2" style="margin-top:28px;">不喧哗的数字，<br>自有<em style="font-style:italic;color:var(--accent)">分量</em></h2>
+    <div class="stats-grid">
+      <div class="stat-cell"><div class="sv-stat-num">98.2<span style="font-size:.4em">%</span></div><p>风险结论经人工复核后的一致率</p></div>
+      <div class="stat-cell"><div class="sv-stat-num">3<span style="font-size:.4em">条</span></div><p>每日平均推送的高信噪比信号</p></div>
+      <div class="stat-cell"><div class="sv-stat-num">¥80<span style="font-size:.4em">亿+</span></div><p>接入平台管理的资产规模</p></div>
+    </div>
+  </div>
+</section>
+</body>
+</html>
