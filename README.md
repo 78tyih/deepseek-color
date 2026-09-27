@@ -15,7 +15,7 @@
 | 轻量组件 | 发丝描边、大圆角、无阴影、胶囊按钮 |
 | 克制动效 | 慢速淡入、轻微视差，拒绝弹跳 |
 
-## 模板库（6 个）
+## 模板库（10 个）
 
 所有模板位于 `templates/`，浏览器直接打开 HTML 即可预览；`previews/` 是对应的渲染图。
 
@@ -27,6 +27,10 @@
 | 04 | Offset Cards 错位卡片 | ![04](templates/previews/04-cards-offset.png) | 特性/角色介绍：莫兰迪色卡片、错位排布、零阴影 |
 | 05 | Landing Full 完整落地页 | ![05](templates/previews/05-landing-full.png) | 完整官网：01–04 的组合 + CTA + 页脚 |
 | 06 | Social Poster 社媒海报 | ![06](templates/previews/06-poster-social.png) | 小红书/公众号封面：4:5 竖版、旋转色块、强调词标题 |
+| 07 | Perform TV 产品页 | ![07](templates/previews/07-perform-tv.png) | 消费电子/硬件发布：全深色、居中巨标题、规格行大数字 |
+| 08 | GPU Networking 参考页 | ![08](templates/previews/08-gpu-server-networking.png) | 技术参考/选型指南：对比表 + 拓扑色块 + 公式行 |
+| 09 | Pricing 定价页 | ![09](templates/previews/09-pricing.png) | SaaS 定价：中间深色主推卡错位下沉 + FAQ 发丝行 |
+| 10 | Docs Reference 文档页 | ![10](templates/previews/10-docs-reference.png) | 开发者文档：粘性侧导航 + 深色代码块 + 强调色提示条 |
 
 ## 目录结构
 
@@ -38,7 +42,7 @@ slava-style/
 ├── assets/
 │   └── base.css           # 可直接引用的变量与组件类（sv-display / sv-kicker / sv-card--* …）
 └── templates/
-    ├── 01-hero-editorial.html … 06-poster-social.html
+    ├── 01-hero-editorial.html … 10-docs-reference.html
     └── previews/*.png
 ```
 

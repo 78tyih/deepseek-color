@@ -61,5 +61,9 @@ Ready-made starting points in `templates/` — copy the closest one and adapt in
 - `04-cards-offset.html` — offset Morandi-tinted card trio
 - `05-landing-full.html` — full landing page combining 01–04 + CTA
 - `06-poster-social.html` — 4:5 social poster for sharing
+- `07-perform-tv.html` — dark consumer-electronics product page with spec rows
+- `08-gpu-server-networking.html` — technical reference page: comparison table + topology blocks
+- `09-pricing.html` — pricing page with sunken dark featured tier + FAQ rows
+- `10-docs-reference.html` — developer docs: sticky side nav + dark code blocks + accent callout
 
 Each template has a rendered preview in `templates/previews/`. Check the preview first when deciding which template fits the request.

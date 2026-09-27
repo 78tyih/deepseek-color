@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>10 · Docs Reference — Slava Style</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;1,400&family=Inter:wght@400;500&family=Noto+Serif+SC:wght@400;500;600&family=Noto+Sans+SC:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/base.css">
+<style>
+  .docs { display:grid; grid-template-columns:repeat(12,1fr); gap:24px; }
+  .docs-nav { grid-column:1/4; position:sticky; top:40px; align-self:start; }
+  .docs-nav a { display:block; padding:12px 0; border-bottom:1px solid var(--hairline); color:var(--ink-soft); text-decoration:none; font-size:14px; }
+  .docs-nav a.active { color:var(--ink); font-weight:500; border-left:2px solid var(--accent); padding-left:14px; }
+  .docs-body { grid-column:5/12; }
+  .docs-body h1 { font-family:var(--font-display); font-size:clamp(2.2rem,4vw,3.4rem); font-weight:500; letter-spacing:-0.02em; margin:20px 0 24px; }
+  .docs-body h2 { font-family:var(--font-display); font-size:26px; font-weight:500; margin:56px 0 16px; }
+  .docs-body p { color:var(--ink-soft); max-width:64ch; margin:14px 0; }
+  .docs-body code { background:rgba(26,26,26,.05); padding:2px 8px; border-radius:6px; font-size:13px; }
+  .code-block {
+    background:var(--night); color:var(--paper-on-night); border-radius:18px;
+    padding:28px 32px; font-family:ui-monospace,monospace; font-size:13.5px; line-height:1.7;
+    margin:24px 0; overflow-x:auto;
+  }
+  .code-block .cm { color:rgba(237,234,228,.45); }
+  .code-block .ac { color:var(--accent); }
+  .callout { border-left:2px solid var(--accent); background:rgba(255,77,0,.05); border-radius:0 16px 16px 0; padding:20px 24px; font-size:14px; margin:24px 0; }
+</style>
+</head>
+<body>
+<section class="sv-section">
+  <div class="sv-container docs">
+    <nav class="docs-nav">
+      <div class="sv-kicker" style="margin-bottom:20px;">Docs · v2.4</div>
+      <a href="#" class="active">快速开始</a>
+      <a href="#">安装与配置</a>
+      <a href="#">API 参考</a>
+      <a href="#">组合诊断</a>
+      <a href="#">信号引擎</a>
+      <a href="#">私有化部署</a>
+    </nav>
+    <div class="docs-body">
+      <div class="sv-kicker">Guides — 01</div>
+      <h1>快速开始</h1>
+      <p>五分钟接入 Aurora：创建一个组合，贴上持仓，让模型给出第一份风险简报。本文覆盖 API Key 申请、首次调用与结果解读。</p>
+
+      <h2>1. 获取 API Key</h2>
+      <p>控制台 → 开发者设置 → 新建 Key。Key 仅在创建时完整展示一次，请妥善保存。所有请求通过 <code>Authorization: Bearer</code> 头鉴权。</p>
+
+      <h2>2. 创建第一个组合</h2>
+      <div class="code-block"><span class="cm"># 创建组合并上传持仓</span>
+curl -X POST https://api.aurora.example/v2/portfolios \
+  -H <span class="ac">"Authorization: Bearer $AURORA_KEY"</span> \
+  -d '{"name":"核心仓位","holdings":[{"symbol":"600519","weight":0.18}]}'</div>
+
+      <h2>3. 请求风险简报</h2>
+      <div class="code-block">curl https://api.aurora.example/v2/portfolios/<span class="ac">{id}</span>/brief
+<span class="cm"># → { "summary": "...", "risks": [...], "sources": [...] }</span></div>
+
+      <div class="callout">简报中的每一条结论都带 <code>sources</code> 溯源字段，审计场景请保留原始响应。</div>
+
+      <h2>下一步</h2>
+      <p>接入信号引擎推送，或阅读 <code>组合诊断</code> 章节了解归因模型的输入要求。</p>
+    </div>
+  </div>
+</section>
+</body>
+</html>
