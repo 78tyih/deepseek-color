@@ -1,11 +1,11 @@
 ---
-name: slava-style
-description: Replicates the visual design style of Slava Kornilov (creative director of Geex Arts) — editorial, magazine-like web/UI design with desaturated Morandi palettes on black/white/gray bases, oversized expressive typography, broken asymmetric grids, image-text interweaving, generous whitespace, and one small high-contrast accent color. Use when the user asks for "Slava style", "Kornilov style", a luxury/editorial/fashion-style landing page or website, Morandi-palette UI, 莫兰迪配色设计, 杂志感排版, 图文穿插/错落布局页面, or any website/widget/poster for official sites, finance, or AI products that should feel clean, quiet-luxury and professional rather than flashy.
+name: deepseek-color
+description: DeepSeek Color — a design system inspired by DeepSeek's brand colors (bright soft brand blue, whale cyan, coral signal orange) applied to quiet-luxury editorial web/UI design — desaturated palettes on black/white/gray bases, oversized expressive typography, broken asymmetric grids, image-text interweaving, generous whitespace, and one small high-contrast accent color. Ships with 10 layout skeletons, 5 named palettes (深潜蓝/鲸鱼浅青/深夜机房/雾灰银/珊瑚信号), and a skinning workflow to apply any palette to any skeleton. Use when the user asks for "DeepSeek Color", "DeepSeek 色系/配色", a luxury/editorial landing page or website, 杂志感排版, 图文穿插/错落布局页面, or any website/widget/poster for official sites, finance, or AI products that should feel clean, quiet-luxury and professional rather than flashy.
 ---
 
-# Slava Style (Kornilov / Geex Arts)
+# DeepSeek Color
 
-Design like Slava Kornilov: quiet-luxury editorial interfaces. Calm desaturated surfaces, magazine-grade typography, broken grids — never flashy effects or saturated color piles.
+Quiet-luxury editorial interfaces in DeepSeek's color language: calm desaturated surfaces, magazine-grade typography, broken grids — never flashy effects or saturated color piles.
 
 ## Core principles
 

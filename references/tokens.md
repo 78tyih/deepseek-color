@@ -1,4 +1,4 @@
-# Slava Style — Design Tokens
+# DeepSeek Color — Design Tokens
 
 ## Color tokens
 
