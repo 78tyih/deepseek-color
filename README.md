@@ -1,5 +1,7 @@
 # Slava Style — AI Agent 设计技能
 
+![模板总览](templates/previews/banner-overview.png)
+
 复刻设计师 **Slava Kornilov**（Geex Arts 创意总监）的视觉风格，沉淀成一份可直接安装的 AI Agent Skill：杂志感排版 × 莫兰迪低饱和配色 × 黑白灰高级基底 × 一点强调色。
 
 适配官网、金融、AI 产品等需要「轻奢、干净、专业」气质的场景。
