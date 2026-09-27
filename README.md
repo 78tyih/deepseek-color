@@ -22,6 +22,12 @@
 
 每套色卡的展示页：![P1](templates/palettes/p1-deep-dive-blue.png) ![P2](templates/palettes/p2-whale-cyan.png) ![P3](templates/palettes/p3-midnight-cluster.png) ![P4](templates/palettes/p4-silver-mist.png) ![P5](templates/palettes/p5-coral-signal.png)
 
+### 同一骨架 × 五套皮肤
+
+把五套色卡分别套到「01 首屏」骨架上的换肤对比（页面在 `templates/skins/`，每页只改 6 个 CSS 变量）：
+
+![换肤对比](templates/skins/banner-skins.png)
+
 ## 设计原则
 
 | 原则 | 做法 |
