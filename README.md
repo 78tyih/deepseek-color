@@ -28,6 +28,12 @@
 
 ![换肤对比](templates/skins/banner-skins.png)
 
+### 任意骨架 × 任意色卡
+
+换肤是通用的：在骨架 HTML 里注入一段色卡变量覆盖即可完成。三个组合演示（`templates/skins/`）：
+
+![组合对比](templates/skins/banner-combos.png)
+
 ## 设计原则
 
 | 原则 | 做法 |

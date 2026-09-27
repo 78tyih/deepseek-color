@@ -57,6 +57,10 @@ Five complete palette sets (base/ink/soft/tint/glaze/accent) are defined in `ref
 - **P4 雾灰银** `#4D6BFE` accent on neutral grays — finance, corporate, most restrained
 - **P5 珊瑚信号** `#FF5A3C` accent on warm sand — consumer AI, content products
 
+## Skinning any skeleton (template × palette)
+
+To apply a palette to any existing skeleton: copy the skeleton HTML and inject a `<style>` block (AFTER the base.css link) overriding the variables — `--paper, --paper-2, --ink, --ink-soft, --accent, --hairline` plus the morandi slots (`--sage, --dusty-blue, --terracotta, --blush, --taupe, --moss` → palette tint/glaze). For the dark palette P3 also flip `--night/--night-2/--paper-on-night/--hairline-dark` and swap `rgba(26,26,26,.04)` neutral fills for `rgba(232,237,245,.06)`. Watch relative paths: pages placed in `templates/skins/` must reference base.css as `../../assets/base.css`. Working examples: `templates/skins/hero-*.html` (5 skins) and `templates/skins/09-pricing-x-midnight-cluster.html`, `02-editorial-feed-x-whale-cyan.html`, `06-poster-social-x-deep-dive-blue.html`.
+
 ## Output guidance
 
 When producing HTML/CSS (websites, widgets, posters), start from `assets/base.css` — it encodes the palette variables, type scale and layout utilities described here. Deliver real content, not lorem ipsum.
