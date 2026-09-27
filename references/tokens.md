@@ -33,6 +33,50 @@
 
 Usage ratios: base 70–85%, morandi tints 10–25%, accent < 5%.
 
+## Five palettes (DeepSeek-inspired)
+
+Five ready-made palette sets, each a complete swap of base / ink / soft-text / tint / accent. Showcase pages live in `templates/palettes/`. To reskin any template, override these five variables.
+
+### P1 深潜蓝 Deep Dive Blue — AI 产品与官网（DeepSeek 主色系）
+
+```css
+--paper: #F5F7FB;  --ink: #0E1B3D;  --ink-soft: #5A6B8C;
+--tint:  #A9BCE0;  --glaze: #DCE5F5; --accent: #4D6BFE;
+--hairline: rgba(14,27,61,.14);
+```
+
+### P2 鲸鱼浅青 Whale Cyan — 数据产品与开发者工具
+
+```css
+--paper: #F2F8F9;  --ink: #12333B;  --ink-soft: #4A6A72;
+--tint:  #A8CFD6;  --glaze: #DDEEF0; --accent: #00B3F4;
+--hairline: rgba(18,51,59,.14);
+```
+
+### P3 深夜机房 Midnight Cluster — 暗色科技 / 大屏 / 硬件发布
+
+```css
+--paper: #0D1420;  --ink: #E8EDF5;  --ink-soft: #8B99AF;
+--tint:  #2A3A52;  --glaze: #16202F; --accent: #5B8CFF;
+--hairline: rgba(232,237,245,.16);
+```
+
+### P4 雾灰银 Silver Mist — 金融与企业官网（最克制）
+
+```css
+--paper: #F4F4F2;  --ink: #1A1D21;  --ink-soft: #5C615E;
+--tint:  #C6CBC9;  --glaze: #E4E5E1; --accent: #4D6BFE;
+--hairline: rgba(26,29,33,.14);
+```
+
+### P5 珊瑚信号 Coral Signal — 消费级 AI 与内容产品（暖）
+
+```css
+--paper: #FBF6F1;  --ink: #2B1D18;  --ink-soft: #7A6157;
+--tint:  #E3C4B5;  --glaze: #F0E4DA; --accent: #FF5A3C;
+--hairline: rgba(43,29,24,.14);
+```
+
 ## Type scale
 
 | Role | Size | Weight | Extras |

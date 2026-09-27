@@ -1,0 +1,137 @@
+[
+  {
+    "file": "p1-deep-dive-blue.html",
+    "name": "深潜蓝",
+    "en": "Deep Dive Blue",
+    "colors": [
+      [
+        "纸底 Paper",
+        "#F5F7FB"
+      ],
+      [
+        "墨色 Ink",
+        "#0E1B3D"
+      ],
+      [
+        "雾蓝 Mist",
+        "#A9BCE0"
+      ],
+      [
+        "浅蓝釉 Glaze",
+        "#DCE5F5"
+      ],
+      [
+        "深潜蓝 Accent",
+        "#4D6BFE"
+      ]
+    ]
+  },
+  {
+    "file": "p2-whale-cyan.html",
+    "name": "鲸鱼浅青",
+    "en": "Whale Cyan",
+    "colors": [
+      [
+        "海盐底 Salt",
+        "#F2F8F9"
+      ],
+      [
+        "深潮 Ink",
+        "#12333B"
+      ],
+      [
+        "浅青 Mist",
+        "#A8CFD6"
+      ],
+      [
+        "浪花 Foam",
+        "#DDEEF0"
+      ],
+      [
+        "鲸青 Accent",
+        "#00B3F4"
+      ]
+    ]
+  },
+  {
+    "file": "p3-midnight-cluster.html",
+    "name": "深夜机房",
+    "en": "Midnight Cluster",
+    "colors": [
+      [
+        "夜底 Night",
+        "#0D1420"
+      ],
+      [
+        "雾白 Text",
+        "#E8EDF5"
+      ],
+      [
+        "石板 Slate",
+        "#2A3A52"
+      ],
+      [
+        "深槽 Slot",
+        "#16202F"
+      ],
+      [
+        "信号蓝 Accent",
+        "#5B8CFF"
+      ]
+    ]
+  },
+  {
+    "file": "p4-silver-mist.html",
+    "name": "雾灰银",
+    "en": "Silver Mist",
+    "colors": [
+      [
+        "雾底 Fog",
+        "#F4F4F2"
+      ],
+      [
+        "石墨 Ink",
+        "#1A1D21"
+      ],
+      [
+        "银灰 Silver",
+        "#C6CBC9"
+      ],
+      [
+        "浅雾 Haze",
+        "#E4E5E1"
+      ],
+      [
+        "深潜蓝 Accent",
+        "#4D6BFE"
+      ]
+    ]
+  },
+  {
+    "file": "p5-coral-signal.html",
+    "name": "珊瑚信号",
+    "en": "Coral Signal",
+    "colors": [
+      [
+        "暖沙 Sand",
+        "#FBF6F1"
+      ],
+      [
+        "赭墨 Ink",
+        "#2B1D18"
+      ],
+      [
+        "裸粉 Blush",
+        "#E3C4B5"
+      ],
+      [
+        "米雾 Cream",
+        "#F0E4DA"
+      ],
+      [
+        "珊瑚橙 Accent",
+        "#FF5A3C"
+      ]
+    ]
+  }
+]

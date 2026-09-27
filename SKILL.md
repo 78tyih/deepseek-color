@@ -47,6 +47,16 @@ Quick defaults:
 - No perfectly symmetric uniform grids of identical cards
 - No more than one accent color; never accent + Morandi tint on the same element
 
+## Five palettes (DeepSeek-inspired)
+
+Five complete palette sets (base/ink/soft/tint/glaze/accent) are defined in `references/tokens.md` under "Five palettes", each with a showcase page in `templates/palettes/` (`p1`–`p5`, previews alongside as `.png`). When the user names a mood or scenario, pick one and swap the CSS variables — never mix two palettes:
+
+- **P1 深潜蓝** `#4D6BFE` accent — AI products, official sites (DeepSeek primary blue family)
+- **P2 鲸鱼浅青** `#00B3F4` accent — data products, dev tools
+- **P3 深夜机房** `#5B8CFF` accent on `#0D1420` — dark tech, dashboards, hardware launches
+- **P4 雾灰银** `#4D6BFE` accent on neutral grays — finance, corporate, most restrained
+- **P5 珊瑚信号** `#FF5A3C` accent on warm sand — consumer AI, content products
+
 ## Output guidance
 
 When producing HTML/CSS (websites, widgets, posters), start from `assets/base.css` — it encodes the palette variables, type scale and layout utilities described here. Deliver real content, not lorem ipsum.

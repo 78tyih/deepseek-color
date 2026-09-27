@@ -6,6 +6,22 @@
 
 适配官网、金融、AI 产品等需要「轻奢、干净、专业」气质的场景。
 
+## 五大色卡（DeepSeek 色系灵感）
+
+![五大色卡](templates/palettes/banner-palettes.png)
+
+以 DeepSeek 品牌色（明亮柔和的品牌蓝 `#4D6BFE`、鲸鱼浅青、辅助橙系）为灵感归纳的五套色卡，全部遵循 Slava 风格的配色纪律（基底 70–85% / 灰调 10–25% / 强调 <5%）。每套一页展示模板位于 `templates/palettes/`，可直接套用模板库 01–10 的任意骨架：改 5 个变量整页换肤。
+
+| # | 色卡 | 基底 / 墨色 / 灰调 / 强调 | 气质与场景 |
+|---|---|---|---|
+| P1 | 深潜蓝 Deep Dive Blue | `#F5F7FB` / `#0E1B3D` / `#A9BCE0` / `#4D6BFE` | DeepSeek 主色系，AI 产品与官网首选 |
+| P2 | 鲸鱼浅青 Whale Cyan | `#F2F8F9` / `#12333B` / `#A8CFD6` / `#00B3F4` | 湿润呼吸感，数据产品与开发者工具 |
+| P3 | 深夜机房 Midnight Cluster | `#0D1420` / `#E8EDF5` / `#2A3A52` / `#5B8CFF` | 暗色科技，监控大屏与硬件发布 |
+| P4 | 雾灰银 Silver Mist | `#F4F4F2` / `#1A1D21` / `#C6CBC9` / `#4D6BFE` | 最克制的中性灰，金融与企业官网 |
+| P5 | 珊瑚信号 Coral Signal | `#FBF6F1` / `#2B1D18` / `#E3C4B5` / `#FF5A3C` | 暖沙 + 珊瑚橙，消费级 AI 与内容产品 |
+
+每套色卡的展示页：![P1](templates/palettes/p1-deep-dive-blue.png) ![P2](templates/palettes/p2-whale-cyan.png) ![P3](templates/palettes/p3-midnight-cluster.png) ![P4](templates/palettes/p4-silver-mist.png) ![P5](templates/palettes/p5-coral-signal.png)
+
 ## 设计原则
 
 | 原则 | 做法 |
