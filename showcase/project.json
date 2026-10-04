@@ -1,0 +1,35 @@
+{
+  "slug": "deepseek-color",
+  "type": "agent-design-skill",
+  "archetype": "token-tryon",
+  "oneLiner": {
+    "zh": "Slava Kornilov 风格复刻的 AI Agent 设计技能：莫兰迪式克制配色 × 杂志感排版 × 12 个零依赖版式骨架",
+    "en": "An AI agent design skill: restrained palettes, editorial typography, 12 zero-dependency HTML skeletons"
+  },
+  "audience": {
+    "zh": "给 AI Agent 装「审美」的开发者与内容团队；适配官网、金融、AI 产品页",
+    "en": "Developers & content teams giving their agents taste; fits sites, finance and AI product pages"
+  },
+  "facts": {
+    "palettes": 5,
+    "skeletons": 12,
+    "skinCombos": 8,
+    "runtimeDeps": 0,
+    "discipline": "base 70–85% / muted 10–25% / accent <5%",
+    "installTargets": ["Kimi Work", "Codex", "Claude Code", "WorkBuddy"]
+  },
+  "links": {
+    "showcase": "https://78tyih.github.io/deepseek-color/showcase.html",
+    "palettes": "https://78tyih.github.io/deepseek-color/palettes/p1-deep-dive-blue.html",
+    "templates": "https://78tyih.github.io/deepseek-color/templates/01-hero-editorial.html",
+    "repo": "https://github.com/78tyih/deepseek-color"
+  },
+  "evidence": {
+    "fivePalettes": "Observed — templates/palettes/palettes.json + 5 spec pages in repo",
+    "twelveSkeletons": "Observed — 12 self-contained HTML files, 0 local refs, Google Fonts only",
+    "reskinSixVars": "Inferred — skins/*.html each override 6 :root variables; diff-checked by eye, not asserted by tooling",
+    "liveRendering": "Observed — docs/ copies served via GitHub Pages; showcase iframes load repo files directly",
+    "installationPaths": "Inferred — documented in README; not exercised end-to-end on every target agent"
+  },
+  "updated": "2026-10-05"
+}

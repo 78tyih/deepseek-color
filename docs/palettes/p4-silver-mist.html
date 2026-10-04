@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>色卡 04 · 雾灰银 — DeepSeek Color</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;1,400&family=Inter:wght@400;500&family=Noto+Serif+SC:wght@400;500;600&family=Noto+Sans+SC:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #F4F4F2; --ink: #1A1D21; --ink-soft: #5C615E;
+    --accent: #4D6BFE; --hairline: rgba(26,29,33,.14);
+    --font-display: "Playfair Display", "Noto Serif SC", serif;
+    --font-body: "Inter", "Noto Sans SC", system-ui, sans-serif;
+  }
+  body { background:var(--paper); color:var(--ink); font-family:var(--font-body); font-size:16px; line-height:1.6; margin:0; -webkit-font-smoothing:antialiased; }
+  .sv-display { font-family:var(--font-display); font-size:clamp(2.8rem,6vw,4.6rem); line-height:1.05; letter-spacing:-0.03em; font-weight:500; }
+  .sv-display em { font-style:italic; color:var(--accent); }
+  .sv-kicker { display:flex; align-items:center; gap:14px; font-size:12px; font-weight:500; letter-spacing:.12em; text-transform:uppercase; color:var(--ink-soft); }
+  .sv-kicker::before { content:""; width:32px; height:1px; background:var(--hairline); }
+  .sv-micro { font-size:11px; letter-spacing:.12em; text-transform:uppercase; color:var(--ink-soft); }
+  .wrap { max-width:1280px; margin:0 auto; padding: 90px 40px 70px; }
+  .head { display:flex; justify-content:space-between; align-items:flex-end; gap:40px; }
+  .head p { max-width:44ch; color:var(--ink-soft); margin:22px 0 0; }
+  .swatches { display:grid; grid-template-columns:repeat(5,1fr); gap:20px; margin-top:64px; }
+  .swatch { border-radius:20px; aspect-ratio:3/4; padding:22px; display:flex; flex-direction:column; justify-content:space-between; border:1px solid var(--hairline); }
+  .swatch .hex { font-family:ui-monospace,monospace; font-size:13px; }
+  .demo { display:grid; grid-template-columns:repeat(12,1fr); gap:24px; margin-top:90px; align-items:center; }
+  .demo-text { grid-column:1/7; }
+  .demo-text h2 { font-family:var(--font-display); font-size:clamp(1.9rem,3.4vw,2.8rem); font-weight:500; letter-spacing:-0.02em; margin:18px 0 16px; }
+  .demo-text p { color:var(--ink-soft); max-width:42ch; }
+  .demo-card { grid-column:8/13; border-radius:24px; aspect-ratio:4/3; padding:32px; display:flex; align-items:flex-end; }
+  .btns { display:flex; gap:14px; margin-top:28px; }
+  .btn { display:inline-flex; padding:13px 26px; border-radius:999px; border:1px solid var(--hairline); font-size:14px; font-weight:500; text-decoration:none; color:var(--ink); }
+  .btn--accent { background:var(--accent); border-color:var(--accent); color:#fff; }
+  .foot { margin-top:80px; padding-top:24px; border-top:1px solid var(--hairline); display:flex; justify-content:space-between; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="head">
+    <div>
+      <div class="sv-kicker">Palette 04 — Silver Mist</div>
+      <h1 class="sv-display" style="margin-top:26px;">雾灰银<br><em>色卡</em> Palette 04</h1>
+      <p>中性灰银基底 + 深潜蓝点缀。最克制的一套，适合金融、白皮书与企业官网。</p>
+    </div>
+    <span class="sv-micro">DeepSeek Color · Palette 04</span>
+  </div>
+  <div class="swatches">
+    <div class="swatch" style="background:#F4F4F2;">
+      <span class="sv-micro" style="color:rgba(0,0,0,.55);">雾底 Fog</span>
+      <span class="hex" style="color:rgba(0,0,0,.55);">#F4F4F2</span>
+    </div>
+    <div class="swatch" style="background:#1A1D21;">
+      <span class="sv-micro" style="color:rgba(255,255,255,.85);">石墨 Ink</span>
+      <span class="hex" style="color:rgba(255,255,255,.85);">#1A1D21</span>
+    </div>
+    <div class="swatch" style="background:#C6CBC9;">
+      <span class="sv-micro" style="color:rgba(0,0,0,.55);">银灰 Silver</span>
+      <span class="hex" style="color:rgba(0,0,0,.55);">#C6CBC9</span>
+    </div>
+    <div class="swatch" style="background:#E4E5E1;">
+      <span class="sv-micro" style="color:rgba(0,0,0,.55);">浅雾 Haze</span>
+      <span class="hex" style="color:rgba(0,0,0,.55);">#E4E5E1</span>
+    </div>
+    <div class="swatch" style="background:#4D6BFE;">
+      <span class="sv-micro" style="color:rgba(255,255,255,.85);">深潜蓝 Accent</span>
+      <span class="hex" style="color:rgba(255,255,255,.85);">#4D6BFE</span>
+    </div>
+  </div>
+  <div class="demo">
+    <div class="demo-text">
+      <div class="sv-kicker">应用示例 Applied</div>
+      <h2>同一套骨架，<br>换上<em style="font-style:italic;color:var(--accent)">雾灰银</em>的气质</h2>
+      <p>色卡可直接套用到模板库 01–10 的任意骨架：改 5 个变量，整页换肤。</p>
+      <div class="btns"><a class="btn btn--accent" href="#">主按钮</a><a class="btn" href="#">次按钮 →</a></div>
+    </div>
+    <div class="demo-card" style="background:#C6CBC9;"><span class="sv-micro" style="color:rgba(0,0,0,.55);">Media Block · Silver Mist</span></div>
+  </div>
+  <div class="foot">
+    <span class="sv-micro">Base / Ink / Tint / Glaze / Accent</span>
+    <span class="sv-micro">github.com/78tyih/deepseek-color</span>
+  </div>
+</div>
+</body>
+</html>

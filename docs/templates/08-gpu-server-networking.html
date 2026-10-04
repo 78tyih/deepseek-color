@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>08 · GPU Server Networking — DeepSeek Color</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;1,400&family=Inter:wght@400;500&family=Noto+Serif+SC:wght@400;500;600&family=Noto+Sans+SC:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/base.css">
+<style>
+  .page-head { display:grid; grid-template-columns:repeat(12,1fr); gap:24px; align-items:end; }
+  .page-head .left { grid-column:1/8; }
+  .page-head .right { grid-column:9/13; background:var(--moss); border-radius:24px; aspect-ratio:1/1; display:flex; align-items:flex-end; padding:28px; }
+  .ref-block { margin-top: 100px; }
+  .ref-block h3 { font-family:var(--font-display); font-size:clamp(1.6rem,2.6vw,2.2rem); font-weight:500; margin: 20px 0 32px; }
+  .spec-table { border-top: 1px solid var(--hairline); }
+  .spec-line { display:grid; grid-template-columns: 220px 1fr 1fr; gap:24px; padding:18px 0; border-bottom:1px solid var(--hairline); font-size:14px; }
+  .spec-line .k { color: var(--ink-soft); }
+  .spec-line .v { font-weight: 500; }
+  .spec-line .note { color: var(--ink-soft); }
+  .topo { display:grid; grid-template-columns:repeat(12,1fr); gap:24px; margin-top:32px; }
+  .topo .cell { border-radius:20px; padding:24px; min-height:130px; display:flex; flex-direction:column; justify-content:space-between; }
+  .topo .c1 { grid-column:1/5; background:var(--dusty-blue); }
+  .topo .c2 { grid-column:5/9; background:var(--sage); }
+  .topo .c3 { grid-column:9/13; background:var(--terracotta); }
+  .topo .cell b { font-family:var(--font-display); font-size:20px; font-weight:500; }
+  .topo .cell span { font-size:12px; color:rgba(26,26,26,.6); }
+</style>
+</head>
+<body>
+<section class="sv-section">
+  <div class="sv-container">
+    <div class="page-head">
+      <div class="left">
+        <div class="sv-kicker">Reference · GPU Cluster Networking</div>
+        <h1 class="sv-display" style="font-size:clamp(2.6rem,6vw,5.5rem); margin-top:28px;">GPU 服务器<br>组网<em>参考</em>架构</h1>
+        <p style="max-width:46ch; color:var(--ink-soft); margin-top:24px;">面向 8–512 卡训练集群的网络选型速查：RoCEv2 与 InfiniBand 的取舍、轨式与胖树拓扑、以及每档规模对应的带宽预算。</p>
+      </div>
+      <div class="right"><span class="sv-micro" style="color:rgba(26,26,26,.55);">RDMA · 400G · Rail-optimized</span></div>
+    </div>
+
+    <div class="ref-block">
+      <div class="sv-kicker">01 — 互联方案对比</div>
+      <h3>RoCEv2 <em style="color:var(--accent)">vs</em> InfiniBand</h3>
+      <div class="spec-table">
+        <div class="spec-line"><span class="k">单端口带宽</span><span class="v">400 GbE / 800 GbE</span><span class="note">NDR 400G / XDR 800G</span></div>
+        <div class="spec-line"><span class="k">端到端时延</span><span class="v">~2–3 μs（交换机跳转）</span><span class="note">IB 略优，~1.5 μs</span></div>
+        <div class="spec-line"><span class="k">拥塞控制</span><span class="v">ECN + PFC（需精细调参）</span><span class="note">IB 原生 Credit-based，开箱即用</span></div>
+        <div class="spec-line"><span class="k">生态与成本</span><span class="v">以太网生态，TCO 低 20–30%</span><span class="note">IB 封闭生态，运维省心</span></div>
+        <div class="spec-line"><span class="k">建议场景</span><span class="v">≤ 256 卡 · 成本敏感</span><span class="note">&gt; 256 卡 · 稳定性优先</span></div>
+      </div>
+    </div>
+
+    <div class="ref-block">
+      <div class="sv-kicker">02 — 拓扑速查</div>
+      <h3>三种规模的推荐拓扑</h3>
+      <div class="topo">
+        <div class="cell c1"><b>8–64 卡</b><span>单轨直连 · 1 台 400G 交换机全互联，无阻塞</span></div>
+        <div class="cell c2"><b>64–256 卡</b><span>轨式优化（Rail）· 每 GPU 一张网卡独立上联</span></div>
+        <div class="cell c3"><b>256–512+ 卡</b><span>两层胖树 · 1:1 收敛比，Leaf-Spine 无阻塞</span></div>
+      </div>
+    </div>
+
+    <div class="ref-block" style="padding-bottom:40px;">
+      <div class="sv-kicker">03 — 带宽预算公式</div>
+      <h3>每张 GPU 需要多少网络？</h3>
+      <div class="spec-table">
+        <div class="spec-line"><span class="k">经验法则</span><span class="v">GPU 显存带宽 ÷ 8 ≈ 网卡带宽</span><span class="note">H100（3.35TB/s）→ 400G 网卡</span></div>
+        <div class="spec-line"><span class="k">AllReduce 敏感度</span><span class="v">通信占比 &gt; 30% 时上 IB</span><span class="note">大模型 dense 训练典型值</span></div>
+        <div class="spec-line"><span class="k">存储网络</span><span class="v">独立 VLAN / 独立物理网</span><span class="note">避免训练流量与存储互相挤占</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+</body>
+</html>

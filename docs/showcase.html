@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light" data-lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DeepSeek Color — AI Agent 设计技能 · 交互展示</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;1,400&family=Inter:wght@400;500;600&family=Noto+Serif+SC:wght@400;500;600&family=Noto+Sans+SC:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#F5F7FB; --panel:#FFFFFF; --ink:#0E1B3D; --ink2:#5A6B8C; --ink3:#8B97B0;
+  --hairline:rgba(14,27,61,.13); --accent:#4D6BFE; --accent-soft:rgba(77,107,254,.09);
+  --code-bg:#0D1420; --code-ink:#E8EDF5;
+  --font-display:"Playfair Display","Noto Serif SC",serif;
+  --font-body:"Inter","Noto Sans SC",system-ui,sans-serif;
+  --mono:ui-monospace,SFMono-Regular,Menlo,monospace;
+}
+html[data-theme="dark"]{
+  --paper:#0D1420; --panel:#131C2C; --ink:#E8EDF5; --ink2:#9FB0CC; --ink3:#5F7195;
+  --hairline:rgba(232,237,245,.14); --accent:#5B8CFF; --accent-soft:rgba(91,140,255,.13);
+  --code-bg:#080D16;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--paper);color:var(--ink);font-family:var(--font-body);margin:0;-webkit-font-smoothing:antialiased;line-height:1.6}
+a{color:inherit}
+.wrap{max-width:1180px;margin:0 auto;padding:0 36px}
+.en{display:none}
+html[data-lang="en"] .en{display:inline}
+html[data-lang="en"] .zh{display:none}
+
+/* header */
+header{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--paper) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--hairline)}
+.hd{display:flex;align-items:center;justify-content:space-between;padding:16px 36px;max-width:1180px;margin:0 auto}
+.logo{font-family:var(--font-display);font-size:19px;font-weight:600;text-decoration:none}
+.logo b{color:var(--accent)}
+.hd-right{display:flex;gap:8px;align-items:center}
+.tgl{border:1px solid var(--hairline);background:transparent;color:var(--ink2);border-radius:999px;padding:5px 13px;font-size:12px;font-weight:500;cursor:pointer;font-family:var(--font-body);transition:all .15s ease}
+.tgl:hover{color:var(--ink);border-color:var(--ink3)}
+.tgl.on{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+
+/* hero */
+.hero{padding:88px 0 64px;border-bottom:1px solid var(--hairline)}
+.kicker{display:flex;align-items:center;gap:14px;font-size:12px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--ink2)}
+.kicker::before{content:"";width:34px;height:1px;background:var(--ink3)}
+h1.sv{font-family:var(--font-display);font-size:clamp(2.6rem,5.6vw,4.4rem);line-height:1.06;letter-spacing:-.03em;font-weight:500;margin:26px 0 0;max-width:20ch}
+h1.sv em{font-style:italic;color:var(--accent)}
+.sub{max-width:62ch;color:var(--ink2);font-size:16px;margin:22px 0 0}
+.chips{display:flex;flex-wrap:wrap;gap:9px;margin-top:30px}
+.chip{border:1px solid var(--hairline);border-radius:999px;padding:7px 15px;font-size:12.5px;color:var(--ink2);background:var(--panel)}
+.chip b{color:var(--accent);font-weight:600}
+.cta{display:flex;gap:14px;margin-top:34px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 24px;border-radius:999px;font-size:13.5px;font-weight:500;text-decoration:none;border:1px solid var(--hairline);transition:all .15s ease}
+.btn--accent{background:var(--accent);border-color:var(--accent);color:#fff}
+.btn--accent:hover{opacity:.9}
+.btn:hover{border-color:var(--ink3)}
+
+/* sections */
+section{padding:72px 0;border-bottom:1px solid var(--hairline)}
+.sec-head{display:flex;align-items:baseline;justify-content:space-between;gap:24px;margin-bottom:38px;flex-wrap:wrap}
+.sec-no{font-family:var(--font-display);font-size:13px;letter-spacing:.16em;color:var(--accent);font-weight:600}
+h2{font-family:var(--font-display);font-size:clamp(1.6rem,3vw,2.3rem);letter-spacing:-.02em;font-weight:500;margin:8px 0 0}
+.sec-sub{color:var(--ink2);font-size:14px;max-width:52ch}
+
+/* palettes */
+.pal-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:18px}
+@media(max-width:960px){.pal-grid{grid-template-columns:repeat(2,1fr)}}
+.pal{border:1px solid var(--hairline);border-radius:18px;background:var(--panel);overflow:hidden;text-decoration:none;display:block;transition:transform .18s ease}
+.pal:hover{transform:translateY(-3px)}
+.pal-swatches{display:flex;height:112px}
+.pal-swatches i{flex:1}
+.pal-body{padding:16px 18px 18px}
+.pal-name{font-family:var(--font-display);font-size:17px;font-weight:600}
+.pal-en{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);margin-top:2px}
+.pal-hex{font-family:var(--mono);font-size:11px;color:var(--ink2);margin-top:10px;line-height:1.7}
+.pal-go{margin-top:12px;font-size:12px;color:var(--accent);font-weight:500}
+
+/* try-on */
+.tryon{border:1px solid var(--hairline);border-radius:20px;background:var(--panel);overflow:hidden}
+.tryon-bar{display:flex;flex-wrap:wrap;gap:8px;padding:14px 18px;border-bottom:1px solid var(--hairline);align-items:center}
+.tryon-bar .lbl{font-size:12px;color:var(--ink3);margin-right:4px}
+.skin-btn{border:1px solid var(--hairline);background:transparent;color:var(--ink2);border-radius:999px;padding:6px 14px;font-size:12.5px;cursor:pointer;font-family:var(--font-body);transition:all .15s ease}
+.skin-btn:hover{color:var(--ink)}
+.skin-btn.on{background:var(--accent);border-color:var(--accent);color:#fff}
+.tryon-frame{background:#E9ECF2;height:560px;position:relative}
+html[data-theme="dark"] .tryon-frame{background:#080D16}
+.tryon-frame iframe{width:1280px;height:760px;border:0;transform-origin:0 0;position:absolute;left:50%;top:50%;translate:-50% -50%;scale:.86}
+.tryon-meta{display:flex;justify-content:space-between;align-items:center;padding:13px 18px;border-top:1px solid var(--hairline);font-size:12.5px;color:var(--ink2)}
+.tryon-meta a{color:var(--accent);text-decoration:none;font-weight:500}
+.ratio-note{font-family:var(--mono);font-size:11px;color:var(--ink3)}
+
+/* templates */
+.tpl-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+@media(max-width:960px){.tpl-grid{grid-template-columns:repeat(1,1fr)}}
+.tpl{border:1px solid var(--hairline);border-radius:16px;overflow:hidden;background:var(--panel);text-decoration:none;display:block;transition:transform .18s ease}
+.tpl:hover{transform:translateY(-3px)}
+.tpl img{width:100%;aspect-ratio:16/10;object-fit:cover;object-position:top;display:block;border-bottom:1px solid var(--hairline)}
+.tpl-body{padding:14px 16px 16px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.tpl-name{font-size:14px;font-weight:600}
+.tpl-scene{font-size:12px;color:var(--ink3);margin-top:2px}
+.tpl-go{font-size:11.5px;color:var(--accent);white-space:nowrap;font-weight:500}
+
+/* four questions */
+.q{display:grid;grid-template-columns:150px 1fr;gap:28px;padding:26px 0;border-top:1px solid var(--hairline)}
+.q:first-of-type{border-top:0}
+@media(max-width:820px){.q{grid-template-columns:1fr;gap:10px}}
+.q-t{font-family:var(--font-display);font-size:16px;font-weight:600}
+.q-t span{display:block;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink3);margin-top:4px;font-family:var(--font-body);font-weight:500}
+.q-b{color:var(--ink2);font-size:14.5px}
+.q-b b{color:var(--ink)}
+.q-b ul{margin:10px 0 0;padding-left:18px}
+.q-b li{margin:5px 0}
+
+/* table */
+.tbl{width:100%;border-collapse:collapse;font-size:13.5px;margin-top:6px}
+.tbl th{text-align:left;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);font-weight:500;padding:10px 12px;border-bottom:1px solid var(--hairline)}
+.tbl td{padding:12px;border-bottom:1px solid var(--hairline);vertical-align:top}
+.tbl td:first-child{font-weight:600;white-space:nowrap}
+.tbl code{font-family:var(--mono);font-size:12px;background:var(--accent-soft);color:var(--accent);padding:2px 7px;border-radius:6px}
+
+footer{padding:44px 0 60px;color:var(--ink3);font-size:12.5px}
+footer .fm{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.ev{display:flex;gap:8px;align-items:center}
+.dot{width:7px;height:7px;border-radius:50%;background:#35D07F;display:inline-block}
+.reveal{opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s ease}
+.reveal.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="hd">
+    <a class="logo" href="#">DeepSeek<b>Color</b> <span class="zh" style="font-size:12px;color:var(--ink3);font-weight:400">设计技能</span><span class="en" style="font-size:12px;color:var(--ink3);font-weight:400">Design Skill</span></a>
+    <div class="hd-right">
+      <button class="tgl on" id="lang-zh" onclick="setLang('zh')">中</button>
+      <button class="tgl" id="lang-en" onclick="setLang('en')">EN</button>
+      <button class="tgl" id="th-light" onclick="setTheme('light')">☀︎</button>
+      <button class="tgl" id="th-dark" onclick="setTheme('dark')">☾</button>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+<section class="hero" style="border-bottom:1px solid var(--hairline)">
+  <div class="kicker">AI AGENT DESIGN SKILL <span style="color:var(--ink3)">·</span> <span class="zh">安装即用</span><span class="en">install-and-go</span></div>
+  <h1 class="sv"><span class="zh">五套色卡 × 十二个骨架，<br>给 AI Agent 一套<em>能落地的审美</em></span><span class="en">Five palettes × twelve skeletons —<br>give your AI agent a <em>usable taste</em></span></h1>
+  <p class="sub"><span class="zh">以 DeepSeek 品牌色系为核心的设计系统：70–85% 黑白灰基底、10–25% 低饱和灰调、&lt;5% 单一强调色，配杂志感排版与破格式布局。不堆色彩、不靠特效，靠配色纪律出轻奢干净的专业感。每一页 HTML 都是零依赖单文件，本页所有演示即仓库真实文件在线渲染。</span>
+  <span class="en">A design system built on the DeepSeek brand palette: 70–85% neutral base, 10–25% muted tone, a single accent under 5% — with editorial typography and broken-grid layouts. Every demo on this page is a real file from the repo, rendered live.</span></p>
+  <div class="chips">
+    <span class="chip"><b>5</b> <span class="zh">色卡</span><span class="en">palettes</span></span>
+    <span class="chip"><b>12</b> <span class="zh">版式骨架</span><span class="en">skeletons</span></span>
+    <span class="chip"><b>8</b> <span class="zh">换肤实例</span><span class="en">skin combos</span></span>
+    <span class="chip"><b>0</b> <span class="zh">运行依赖</span><span class="en">runtime deps</span></span>
+    <span class="chip"><span class="zh">配色纪律</span><span class="en">color discipline</span> 70/25/5</span>
+  </div>
+  <div class="cta">
+    <a class="btn btn--accent" href="#tryon"><span class="zh">在线试穿八套换肤 →</span><span class="en">Try the 8 skins live →</span></a>
+    <a class="btn" href="https://github.com/78tyih/deepseek-color">GitHub</a>
+  </div>
+</section>
+
+<!-- 五色卡 -->
+<section id="palettes">
+  <div class="sec-head">
+    <div>
+      <div class="sec-no">01 · PALETTES</div>
+      <h2><span class="zh">五大色卡</span><span class="en">Five palettes</span></h2>
+    </div>
+    <div class="sec-sub"><span class="zh">每套五色：基底 / 墨色 / 灰调 / 浅釉 / 强调。点开任何一张卡片看完整规范页。</span><span class="en">Each palette: base / ink / mist / glaze / accent. Open any card for the full spec page.</span></div>
+  </div>
+  <div class="pal-grid" id="pal-grid"></div>
+</section>
+
+<!-- 试衣间 -->
+<section id="tryon">
+  <div class="sec-head">
+    <div>
+      <div class="sec-no">02 · LIVE TRY-ON</div>
+      <h2><span class="zh">在线试衣间 · 同一骨架 × 五套皮肤</span><span class="en">Live try-on · one skeleton × five skins</span></h2>
+    </div>
+    <div class="sec-sub"><span class="zh">下面每一帧都是仓库里的真实 HTML 在线渲染，切换即换肤——换肤只改 6 个 CSS 变量。</span><span class="en">Every frame below is a real file from this repo, rendered live. Reskinning = overriding 6 CSS variables.</span></div>
+  </div>
+  <div class="tryon">
+    <div class="tryon-bar" id="skin-bar"></div>
+    <div class="tryon-frame"><iframe id="skin-frame" title="skin preview" loading="lazy"></iframe></div>
+    <div class="tryon-meta">
+      <span id="skin-desc"></span>
+      <span class="ratio-note">1280 × 760 · scale .86</span>
+      <a id="skin-open" href="#" target="_blank"><span class="zh">新窗口打开原页 ↗</span><span class="en">Open full page ↗</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- 模板库 -->
+<section id="templates">
+  <div class="sec-head">
+    <div>
+      <div class="sec-no">03 · TEMPLATES</div>
+      <h2><span class="zh">十二个版式骨架 · 全部可在线打开</span><span class="en">Twelve skeletons · all live</span></h2>
+    </div>
+    <div class="sec-sub"><span class="zh">缩略图 = 渲染截图；点「在线打开」直接看 HTML 本体。</span><span class="en">Thumbnails are render captures; "Open live" shows the actual HTML.</span></div>
+  </div>
+  <div class="tpl-grid" id="tpl-grid"></div>
+</section>
+
+<!-- 四问 -->
+<section id="why">
+  <div class="sec-head">
+    <div>
+      <div class="sec-no">04 · FOUR QUESTIONS</div>
+      <h2><span class="zh">四问速览</span><span class="en">Four questions</span></h2>
+    </div>
+  </div>
+  <div class="q">
+    <div class="q-t"><span class="zh">解决什么问题</span><span class="en">Problem</span></div>
+    <div class="q-b"><span class="zh">让 AI 生成的网页普遍「AI 感过强」：花哨渐变、玻璃拟态、霓虹配色。本技能给 Agent 一套写死的配色纪律与排版规则——装进 skills 目录，一句「用深潜蓝做定价页」就得到克制的专业结果。</span><span class="en">AI-generated pages scream "AI-made": flashy gradients, glassmorphism, neon. This skill bakes a color discipline and editorial rules into the agent — drop it into a skills folder and one prompt yields a restrained, professional result.</span></div>
+  </div>
+  <div class="q">
+    <div class="q-t"><span class="zh">什么场景，什么结果</span><span class="en">Scenario → Outcome</span></div>
+    <div class="q-b">
+      <table class="tbl">
+        <tr><th><span class="zh">场景</span><span class="en">Scenario</span></th><th><span class="zh">做法</span><span class="en">How</span></th><th><span class="zh">结果</span><span class="en">Outcome</span></th></tr>
+        <tr><td><span class="zh">官网 / 产品首屏</span><span class="en">Site / hero</span></td><td>01 + P1</td><td><span class="zh">超大衬线标题 + 强调词 + 出血图</span><span class="en">Oversized serif + accent word + bleed image</span></td></tr>
+        <tr><td><span class="zh">监控大屏 / 硬件页</span><span class="en">Dashboard / hardware</span></td><td>03 / 07 + P3</td><td><span class="zh">深夜机房色卡，衬线大数字</span><span class="en">Midnight Cluster, serif numerals</span></td></tr>
+        <tr><td><span class="zh">定价页 / 文档</span><span class="en">Pricing / docs</span></td><td>09 / 10</td><td><span class="zh">主推卡错位下沉；粘性侧导航</span><span class="en">Sunken hero card; sticky side nav</span></td></tr>
+        <tr><td><span class="zh">已有页面换色</span><span class="en">Recolor existing page</span></td><td><code>--accent</code></td><td><span class="zh">改 1 个变量全站换强调色；6 个变量整卡换肤</span><span class="en">1 var = accent swap; 6 vars = full reskin</span></td></tr>
+      </table>
+    </div>
+  </div>
+  <div class="q">
+    <div class="q-t"><span class="zh">什么结构</span><span class="en">Architecture</span></div>
+    <div class="q-b"><span class="zh">三层：SKILL.md（触发与规则）→ references/tokens.md（色卡变量 / 字体阶梯 / 间距）→ assets/base.css + templates/*.html（零依赖骨架）。换肤 = 变量覆盖，不改结构。</span><span class="en">Three layers: SKILL.md (trigger & rules) → references/tokens.md (variables / type scale / spacing) → assets/base.css + templates/*.html (zero-dependency skeletons). Reskin = variable override, structure untouched.</span></div>
+  </div>
+  <div class="q">
+    <div class="q-t"><span class="zh">能复用什么</span><span class="en">Value & Reuse</span></div>
+    <div class="q-b">
+      <ul>
+        <li><b>SKILL.md + tokens.md</b> — <span class="zh">复制进 Kimi / Codex / Claude Code / WorkBuddy 的 skills 目录即可用</span><span class="en">Copy into Kimi / Codex / Claude Code / WorkBuddy skills folders</span></li>
+        <li><b>12 skeletons</b> — <span class="zh">单文件 HTML，直接改文案就是成品页</span><span class="en">Single-file HTML; edit the copy and ship</span></li>
+        <li><b>配色纪律 70/25/5</b> — <span class="zh">不含 DeepSeek 变量也成立的方法论，任何色系可套</span><span class="en">The discipline holds without DeepSeek hues — apply to any palette</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="fm">
+    <div><b style="color:var(--ink2)">DeepSeek Color</b> · <span class="zh">色系灵感来自 DeepSeek 品牌视觉，与 DeepSeek 官方无关联。</span><span class="en">Inspired by DeepSeek's brand visuals; not affiliated with DeepSeek.</span></div>
+    <div class="ev"><span class="dot"></span><span class="zh">本页所有演示 = 仓库真实文件在线渲染（Observed）</span><span class="en">Every demo = a real repo file rendered live (Observed)</span></div>
+  </div>
+</footer>
+
+</div>
+
+<script>
+const PALETTES=[
+ {id:"p1",zh:"深潜蓝",en:"Deep Dive Blue",file:"p1-deep-dive-blue",colors:["#F5F7FB","#0E1B3D","#A9BCE0","#DCE5F5","#4D6BFE"],scene:"AI 产品 / 官网首选"},
+ {id:"p2",zh:"鲸鱼浅青",en:"Whale Cyan",file:"p2-whale-cyan",colors:["#F2F8F9","#12333B","#A8CFD6","#DDEEF0","#00B3F4"],scene:"数据产品 / 开发者工具"},
+ {id:"p3",zh:"深夜机房",en:"Midnight Cluster",file:"p3-midnight-cluster",colors:["#0D1420","#E8EDF5","#2A3A52","#16202F","#5B8CFF"],scene:"暗色科技 / 监控大屏"},
+ {id:"p4",zh:"雾灰银",en:"Silver Mist",file:"p4-silver-mist",colors:["#F4F4F2","#1A1D21","#C6CBC9","#E4E5E1","#4D6BFE"],scene:"金融 / 企业官网"},
+ {id:"p5",zh:"珊瑚信号",en:"Coral Signal",file:"p5-coral-signal",colors:["#FBF6F1","#2B1D18","#E3C4B5","#F0E4DA","#FF5A3C"],scene:"消费级 AI / 内容产品"}
+];
+const SKINS=[
+ {f:"skins/hero-deep-dive-blue",zh:"首屏 × 深潜蓝",en:"Hero × Deep Dive Blue",note:"01 首屏骨架 · P1"},
+ {f:"skins/hero-whale-cyan",zh:"首屏 × 鲸鱼浅青",en:"Hero × Whale Cyan",note:"01 首屏骨架 · P2"},
+ {f:"skins/hero-midnight-cluster",zh:"首屏 × 深夜机房",en:"Hero × Midnight Cluster",note:"01 首屏骨架 · P3"},
+ {f:"skins/hero-silver-mist",zh:"首屏 × 雾灰银",en:"Hero × Silver Mist",note:"01 首屏骨架 · P4"},
+ {f:"skins/hero-coral-signal",zh:"首屏 × 珊瑚信号",en:"Hero × Coral Signal",note:"01 首屏骨架 · P5"},
+ {f:"skins/06-poster-social-x-deep-dive-blue",zh:"海报 × 深潜蓝",en:"Poster × Deep Dive Blue",note:"06 社媒海报 · P1"},
+ {f:"skins/02-editorial-feed-x-whale-cyan",zh:"图文流 × 鲸鱼浅青",en:"Feed × Whale Cyan",note:"02 图文流 · P2"},
+ {f:"skins/09-pricing-x-midnight-cluster",zh:"定价 × 深夜机房",en:"Pricing × Midnight Cluster",note:"09 定价页 · P3"}
+];
+const TPLS=[
+ {n:"01 Hero Editorial",zh:"官网/产品首屏",f:"01-hero-editorial",img:"01-hero-editorial.png"},
+ {n:"02 Editorial Feed",zh:"产品叙事/博客流",f:"02-editorial-feed",img:"02-editorial-feed.png"},
+ {n:"03 Stats Dark",zh:"深色数据展示",f:"03-stats-dark",img:"03-stats-dark.png"},
+ {n:"04 Offset Cards",zh:"特性/角色卡片",f:"04-cards-offset",img:"04-cards-offset.png"},
+ {n:"05 Landing Full",zh:"完整落地页",f:"05-landing-full",img:"05-landing-full.png"},
+ {n:"06 Social Poster",zh:"社媒 4:5 海报",f:"06-poster-social",img:"06-poster-social.png"},
+ {n:"07 Perform TV",zh:"硬件/消费电子",f:"07-perform-tv",img:"07-perform-tv.png"},
+ {n:"08 GPU Networking",zh:"技术选型参考",f:"08-gpu-server-networking",img:"08-gpu-server-networking.png"},
+ {n:"09 Pricing",zh:"SaaS 定价页",f:"09-pricing",img:"09-pricing.png"},
+ {n:"10 Docs Reference",zh:"开发者文档",f:"10-docs-reference",img:"10-docs-reference.png"},
+ {n:"Share Poster",zh:"分享海报（横）",f:"share-poster",img:"share-poster.png"},
+ {n:"Share Poster Story",zh:"分享海报（竖）",f:"share-poster-story",img:"share-poster-story.png"}
+];
+const CDN="https://cdn.jsdelivr.net/gh/78tyih/deepseek-color@main/templates/previews/";
+const lang=()=>document.documentElement.dataset.lang;
+
+function setLang(l){document.documentElement.dataset.lang=l;localStorage.setItem("dsc-lang",l);
+ document.getElementById("lang-zh").classList.toggle("on",l==="zh");
+ document.getElementById("lang-en").classList.toggle("on",l==="en");renderDyn();}
+function setTheme(t){document.documentElement.dataset.theme=t;localStorage.setItem("dsc-theme",t);
+ document.getElementById("th-light").classList.toggle("on",t==="light");
+ document.getElementById("th-dark").classList.toggle("on",t==="dark");}
+
+function renderPal(){
+ document.getElementById("pal-grid").innerHTML=PALETTES.map(p=>`
+  <a class="pal reveal" href="palettes/${p.file}.html" target="_blank">
+    <div class="pal-swatches">${p.colors.map(c=>`<i style="background:${c}"></i>`).join("")}</div>
+    <div class="pal-body">
+      <div class="pal-name">${p[lang()]}</div>
+      <div class="pal-en">${p.en}</div>
+      <div class="pal-hex">${p.colors.join(" · ")}</div>
+      <div class="pal-go"><span class="zh">${p.scene} · 看规范页 ↗</span><span class="en">${p.scene} · spec ↗</span></div>
+    </div>
+  </a>`).join("");
+}
+let curSkin=0;
+function renderSkinBar(){
+ document.getElementById("skin-bar").innerHTML=`<span class="lbl"><span class="zh">骨架 × 色卡</span><span class="en">Skeleton × Palette</span></span>`+
+ SKINS.map((s,i)=>`<button class="skin-btn${i===curSkin?" on":""}" onclick="pickSkin(${i})">${s[lang()]}</button>`).join("");
+}
+function pickSkin(i){
+ curSkin=i;const s=SKINS[i];
+ document.getElementById("skin-frame").src=s.f+".html";
+ document.getElementById("skin-desc").textContent=s.note;
+ document.getElementById("skin-open").href=s.f+".html";
+ renderSkinBar();
+}
+function renderTpls(){
+ document.getElementById("tpl-grid").innerHTML=TPLS.map(t=>`
+  <a class="tpl reveal" href="templates/${t.f}.html" target="_blank">
+    <img src="${CDN}${t.img}" alt="${t.n}" loading="lazy">
+    <div class="tpl-body">
+      <div><div class="tpl-name">${t.n}</div><div class="tpl-scene"><span class="zh">${t.zh}</span><span class="en">${t.zh}</span></div></div>
+      <div class="tpl-go"><span class="zh">在线打开 ↗</span><span class="en">Open live ↗</span></div>
+    </div>
+  </a>`).join("");
+}
+function renderDyn(){renderPal();renderSkinBar();pickSkin(curSkin);renderTpls();observeReveals();}
+
+let io;
+function observeReveals(){
+ io&&io.disconnect();
+ io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}}),{threshold:.12});
+ document.querySelectorAll(".reveal").forEach(el=>io.observe(el));
+}
+(function boot(){
+ const q=new URLSearchParams(location.search);
+ const l=q.get("lang")||localStorage.getItem("dsc-lang")||(navigator.language.startsWith("zh")?"zh":"en");
+ const t=q.get("theme")||localStorage.getItem("dsc-theme")||"light";
+ setTheme(t);setLang(l);observeReveals();
+})();
+</script>
+</body>
+</html>

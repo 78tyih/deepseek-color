@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>09 · Pricing — DeepSeek Color</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;1,400&family=Inter:wght@400;500&family=Noto+Serif+SC:wght@400;500;600&family=Noto+Sans+SC:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/base.css">
+<style>
+  .price-grid { display:grid; grid-template-columns:repeat(12,1fr); gap:24px; margin-top:80px; padding-bottom:60px; }
+  .price-card { border-radius:24px; padding:44px 36px; display:flex; flex-direction:column; min-height:460px; }
+  .price-card:nth-child(1) { grid-column:1/5; background:rgba(26,26,26,.04); }
+  .price-card:nth-child(2) { grid-column:5/9; background:var(--night); color:var(--paper-on-night); transform:translateY(48px); }
+  .price-card:nth-child(3) { grid-column:9/13; background:var(--taupe); }
+  .price-card .plan { font-size:12px; letter-spacing:.12em; text-transform:uppercase; opacity:.6; }
+  .price-card .amount { font-family:var(--font-display); font-size:56px; letter-spacing:-0.02em; margin:20px 0 4px; }
+  .price-card .per { font-size:13px; opacity:.55; }
+  .price-card ul { list-style:none; padding:0; margin:32px 0; flex:1; }
+  .price-card li { font-size:14px; padding:10px 0; border-top:1px solid var(--hairline); opacity:.85; }
+  .price-card:nth-child(2) li { border-color:var(--hairline-dark); }
+  .faq-row { display:flex; justify-content:space-between; gap:24px; padding:24px 0; border-top:1px solid var(--hairline); font-size:15px; }
+  .faq-row span:last-child { color:var(--ink-soft); max-width:52ch; text-align:right; }
+</style>
+<style>
+/* skin override: 深夜机房 */
+:root {
+  --paper:#0D1420; --paper-2:#131C2B;
+  --ink:#E8EDF5; --ink-soft:#8B99AF;
+  --accent:#5B8CFF; --hairline:rgba(232,237,245,.16);
+  --night:#0A0F18; --night-2:#111927; --paper-on-night:#E8EDF5; --hairline-dark:rgba(232,237,245,.16);
+  --sage:#2A3A52; --dusty-blue:#16202F; --terracotta:#2A3A52;
+  --blush:#16202F; --taupe:#2A3A52; --moss:#16202F;
+}
+.sv-card--neutral { background:rgba(232,237,245,.06); }
+.price-card:nth-child(1){background:rgba(232,237,245,.06)!important;}
+</style>
+</head>
+<body>
+<section class="sv-section">
+  <div class="sv-container">
+    <div style="text-align:center;">
+      <div class="sv-kicker" style="justify-content:center;">Pricing</div>
+      <h1 class="sv-display" style="font-size:clamp(2.8rem,6vw,5rem); margin-top:28px;">简单的价格，<br><em>不简单的</em>能力</h1>
+    </div>
+    <div class="price-grid">
+      <div class="price-card">
+        <span class="plan">Starter</span>
+        <div class="amount">¥0</div><span class="per">永久免费</span>
+        <ul><li>3 个监控组合</li><li>每日 1 条信号推送</li><li>基础风险简报</li></ul>
+        <a class="sv-btn" href="#" style="justify-content:center;">免费开始</a>
+      </div>
+      <div class="price-card">
+        <span class="plan">Professional</span>
+        <div class="amount">¥499</div><span class="per">每月 · 按席位</span>
+        <ul><li>无限组合与信号</li><li>组合诊断与归因</li><li>合规报告起草</li><li>优先支持</li></ul>
+        <a class="sv-btn sv-btn--accent" href="#" style="justify-content:center;">开始 14 天试用</a>
+      </div>
+      <div class="price-card">
+        <span class="plan">Institution</span>
+        <div class="amount">定制</div><span class="per">年度合约</span>
+        <ul><li>私有化部署</li><li>专属模型微调</li><li>SLA 99.9%</li></ul>
+        <a class="sv-btn" href="#" style="justify-content:center;">联系销售</a>
+      </div>
+    </div>
+    <div style="margin-top:100px;">
+      <div class="sv-kicker" style="margin-bottom:12px;">FAQ</div>
+      <div class="faq-row"><span>试用期需要绑卡吗？</span><span>不需要，14 天全功能，到期自动降级为免费版。</span></div>
+      <div class="faq-row"><span>数据会出域吗？</span><span>机构版支持全私有化部署，数据不出您的机房。</span></div>
+      <div class="faq-row"><span>可以随时取消吗？</span><span>按月订阅随时取消，按年合约按比例退款。</span></div>
+    </div>
+  </div>
+</section>
+</body>
+</html>

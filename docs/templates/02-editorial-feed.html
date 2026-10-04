@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>02 · Editorial Feed — DeepSeek Color</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;1,400&family=Inter:wght@400;500&family=Noto+Serif+SC:wght@400;500;600&family=Noto+Sans+SC:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/base.css">
+<style>
+  .feed-item { display:grid; grid-template-columns:repeat(12,1fr); gap:24px; align-items:center; margin-bottom:110px; }
+  .feed-text { grid-column:1/6; }
+  .feed-img { grid-column:7/12; aspect-ratio:3/2; background:var(--sage); padding:36px; display:flex; align-items:flex-end; }
+  .feed-item:nth-of-type(2) .feed-text { grid-column:8/13; order:2; }
+  .feed-item:nth-of-type(2) .feed-img { grid-column:2/7; order:1; background:var(--blush); aspect-ratio:4/5; }
+  .feed-item:nth-of-type(3) .feed-text { grid-column:2/7; }
+  .feed-item:nth-of-type(3) .feed-img { grid-column:8/13; background:var(--terracotta); aspect-ratio:1/1; }
+  .feed-index { font-family:var(--font-display); font-size:72px; line-height:1; color:transparent; -webkit-text-stroke:1px var(--hairline); display:block; margin-bottom:20px; }
+  .feed-text h3 { font-family:var(--font-display); font-size:clamp(1.8rem,3vw,2.6rem); font-weight:500; letter-spacing:-0.02em; }
+  .feed-text p { color:var(--ink-soft); max-width:40ch; margin:20px 0 28px; }
+</style>
+</head>
+<body>
+<section class="sv-section">
+  <div class="sv-container">
+    <div class="sv-kicker" style="margin-bottom:70px;">02 — 产品叙事</div>
+    <div class="feed-item">
+      <div class="feed-text">
+        <span class="feed-index">01</span>
+        <h3>组合诊断，<br>一句话说清风险</h3>
+        <p>模型将持仓敞口、相关性断裂与尾部风险压缩成三段可读结论，并标注每一处推理来源。</p>
+        <a class="sv-btn" href="#">查看示例</a>
+      </div>
+      <div class="feed-img sv-media"><span class="sv-micro">Risk Brief · 08:30 推送</span></div>
+    </div>
+    <div class="feed-item">
+      <div class="feed-text">
+        <span class="feed-index">02</span>
+        <h3>市场异动，<br>先于情绪抵达</h3>
+        <p>跨资产信号引擎以分钟级频率扫描 12 个市场，只在信噪比足够高时打扰你。</p>
+        <a class="sv-btn" href="#">信号档案</a>
+      </div>
+      <div class="feed-img sv-media"><span class="sv-micro">Signal Engine · 12 Markets</span></div>
+    </div>
+    <div class="feed-item" style="margin-bottom:0;">
+      <div class="feed-text">
+        <span class="feed-index">03</span>
+        <h3>合规报告，<br>从三天到三分钟</h3>
+        <p>季报、尽调问卷与监管披露由模型起草、人工复核。格式即模板，数据即事实。</p>
+        <a class="sv-btn" href="#">了解流程</a>
+      </div>
+      <div class="feed-img sv-media"><span class="sv-micro">Compliance · Auto Draft</span></div>
+    </div>
+  </div>
+</section>
+</body>
+</html>

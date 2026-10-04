@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>DeepSeek Color — 色卡物语</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;1,400;1,500&family=Inter:wght@400;500;600&family=Noto+Serif+SC:wght@500;600&family=Noto+Sans+SC:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:#E4E5E1; display:flex; justify-content:center; align-items:center; min-height:100vh; }
+
+  .poster {
+    width:1080px; height:1520px; background:#F4F4F2; color:#1A1D21;
+    position:relative; overflow:hidden;
+    display:flex; flex-direction:column; padding:72px 72px 56px;
+    font-family:"Inter","Noto Sans SC",sans-serif;
+  }
+
+  /* oversized outlined word decoration */
+  .ghost {
+    position:absolute; right:-30px; top:170px;
+    font-family:"Playfair Display",serif; font-size:300px; font-weight:600;
+    color:transparent; -webkit-text-stroke:1px rgba(26,29,33,.09);
+    letter-spacing:-0.02em; line-height:1; user-select:none;
+  }
+
+  .kicker {
+    display:flex; align-items:center; gap:16px;
+    font-size:12px; font-weight:500; letter-spacing:.14em; text-transform:uppercase; color:#5C615E;
+  }
+  .kicker::before { content:""; width:36px; height:1px; background:#1A1D21; }
+
+  h1 {
+    margin-top:44px;
+    font-family:"Playfair Display","Noto Serif SC",serif;
+    font-size:96px; font-weight:500; letter-spacing:-0.03em; line-height:1.02;
+  }
+  h1 em { font-style:italic; color:#4D6BFE; }
+  h1 .cjk { font-family:"Noto Serif SC",serif; font-weight:600; font-size:60px; display:block; margin-top:18px; letter-spacing:.02em; }
+
+  .sub {
+    margin-top:26px; max-width:52ch; font-size:15px; line-height:1.7; color:#5C615E;
+  }
+
+  .vtext {
+    position:absolute; left:26px; top:50%; transform:translateY(-50%);
+    writing-mode:vertical-rl; font-size:11px; letter-spacing:.28em; text-transform:uppercase; color:#5C615E;
+  }
+
+  /* ---- five palette bands ---- */
+  .bands { margin-top:64px; display:flex; flex-direction:column; position:relative; z-index:2; }
+  .band {
+    display:flex; align-items:center; gap:28px;
+    padding:34px 32px; border-top:1px solid rgba(26,29,33,.12);
+  }
+  .band:last-child { border-bottom:1px solid rgba(26,29,33,.12); }
+  .band .idx {
+    font-family:"Playfair Display",serif; font-size:34px; font-weight:500;
+    width:56px; flex:none;
+  }
+  .band .meta { width:250px; flex:none; }
+  .band .name { font-family:"Noto Serif SC",serif; font-size:22px; font-weight:600; }
+  .band .en { font-size:11px; letter-spacing:.16em; text-transform:uppercase; margin-top:5px; opacity:.62; font-weight:500; }
+  .band .story { flex:1; padding-right:12px; }
+  .band .poem { font-family:"Noto Serif SC",serif; font-size:16.5px; font-weight:600; line-height:1.55; }
+  .band .trend { margin-top:7px; font-size:11.5px; line-height:1.55; opacity:.62; }
+  .band .chips { display:flex; gap:10px; flex:none; }
+  .chip { width:52px; }
+  .chip i { display:block; width:52px; height:52px; border-radius:14px; border:1px solid rgba(0,0,0,.08); }
+  .chip span { display:block; margin-top:6px; font-size:8.5px; letter-spacing:.04em; opacity:.6; text-align:center; font-weight:500; }
+
+  /* band tint backgrounds — each band carries its own paper color at low opacity */
+  .b1 { background:linear-gradient(90deg, rgba(77,107,254,.07), transparent 62%); }
+  .b2 { background:linear-gradient(90deg, rgba(0,179,244,.07), transparent 62%); }
+  .b3 { background:#0D1420; color:#E8EDF5; }
+  .b3 .en, .b3 .trend, .b3 .chip span { opacity:.66; }
+  .b3 .chip i { border-color:rgba(255,255,255,.14); }
+  .b4 { background:linear-gradient(90deg, rgba(26,29,33,.05), transparent 62%); }
+  .b5 { background:linear-gradient(90deg, rgba(255,90,60,.07), transparent 62%); }
+
+  .foot {
+    margin-top:auto; padding-top:24px;
+    display:flex; justify-content:space-between; align-items:center;
+    font-size:11px; letter-spacing:.18em; text-transform:uppercase; color:#5C615E; font-weight:500;
+    position:relative; z-index:2;
+  }
+  .foot .dot { display:inline-block; width:8px; height:8px; border-radius:50%; background:#4D6BFE; margin-right:10px; vertical-align:1px; }
+</style>
+</head>
+<body>
+<div class="poster">
+  <div class="ghost">05</div>
+  <div class="vtext">DeepSeek Color — Palette System</div>
+
+  <div class="kicker">DeepSeek Color · 设计技能</div>
+
+  <h1>DeepSeek <em>Color</em><span class="cjk">色卡物语</span></h1>
+  <p class="sub">从深潜的理性出发，途经呼吸与夜色，在雾中学会克制，最后以一束暖光回到人。<br>五种颜色，五段深海的旅程。</p>
+
+  <div class="bands">
+    <div class="band b1">
+      <div class="idx">01</div>
+      <div class="meta"><div class="name">深潜蓝</div><div class="en">Deep Dive Blue</div></div>
+      <div class="story"><div class="poem">「向下潜，直到光变成蓝色——思想的深度，决定了蓝的纯度。」</div><div class="trend">理性浪漫主义 · AI 产品与官网</div></div>
+      <div class="chips">
+        <div class="chip"><i style="background:#F5F7FB"></i><span>#F5F7FB</span></div>
+        <div class="chip"><i style="background:#0E1B3D"></i><span>#0E1B3D</span></div>
+        <div class="chip"><i style="background:#A9BCE0"></i><span>#A9BCE0</span></div>
+        <div class="chip"><i style="background:#DCE5F5"></i><span>#DCE5F5</span></div>
+        <div class="chip"><i style="background:#4D6BFE"></i><span>#4D6BFE</span></div>
+      </div>
+    </div>
+    <div class="band b2">
+      <div class="idx">02</div>
+      <div class="meta"><div class="name">鲸鱼浅青</div><div class="en">Whale Cyan</div></div>
+      <div class="story"><div class="poem">「鲸鱼跃出海面的那一秒，整个世界都是浅青色的。」</div><div class="trend">呼吸感设计 · 数据产品与开发者工具</div></div>
+      <div class="chips">
+        <div class="chip"><i style="background:#F2F8F9"></i><span>#F2F8F9</span></div>
+        <div class="chip"><i style="background:#12333B"></i><span>#12333B</span></div>
+        <div class="chip"><i style="background:#A8CFD6"></i><span>#A8CFD6</span></div>
+        <div class="chip"><i style="background:#DDEEF0"></i><span>#DDEEF0</span></div>
+        <div class="chip"><i style="background:#00B3F4"></i><span>#00B3F4</span></div>
+      </div>
+    </div>
+    <div class="band b3">
+      <div class="idx">03</div>
+      <div class="meta"><div class="name">深夜机房</div><div class="en">Midnight Cluster</div></div>
+      <div class="story"><div class="poem">「深夜的机房没有声音，只有信号灯替星辰值班。」</div><div class="trend">暗色即奢侈 · 监控大屏与硬件发布</div></div>
+      <div class="chips">
+        <div class="chip"><i style="background:#0D1420"></i><span>#0D1420</span></div>
+        <div class="chip"><i style="background:#E8EDF5"></i><span>#E8EDF5</span></div>
+        <div class="chip"><i style="background:#2A3A52"></i><span>#2A3A52</span></div>
+        <div class="chip"><i style="background:#16202F"></i><span>#16202F</span></div>
+        <div class="chip"><i style="background:#5B8CFF"></i><span>#5B8CFF</span></div>
+      </div>
+    </div>
+    <div class="band b4">
+      <div class="idx">04</div>
+      <div class="meta"><div class="name">雾灰银</div><div class="en">Silver Mist</div></div>
+      <div class="story"><div class="poem">「清晨的雾最克制，它什么都不说，却让一切显得更贵。」</div><div class="trend">Quiet Luxury 静奢风 · 金融与企业官网</div></div>
+      <div class="chips">
+        <div class="chip"><i style="background:#F4F4F2"></i><span>#F4F4F2</span></div>
+        <div class="chip"><i style="background:#1A1D21"></i><span>#1A1D21</span></div>
+        <div class="chip"><i style="background:#C6CBC9"></i><span>#C6CBC9</span></div>
+        <div class="chip"><i style="background:#E4E5E1"></i><span>#E4E5E1</span></div>
+        <div class="chip"><i style="background:#4D6BFE"></i><span>#4D6BFE</span></div>
+      </div>
+    </div>
+    <div class="band b5">
+      <div class="idx">05</div>
+      <div class="meta"><div class="name">珊瑚信号</div><div class="en">Coral Signal</div></div>
+      <div class="story"><div class="poem">「深海里最暖的一束光，是珊瑚在说：我在这里。」</div><div class="trend">有温度的 AI · 消费级与内容产品</div></div>
+      <div class="chips">
+        <div class="chip"><i style="background:#FBF6F1"></i><span>#FBF6F1</span></div>
+        <div class="chip"><i style="background:#2B1D18"></i><span>#2B1D18</span></div>
+        <div class="chip"><i style="background:#E3C4B5"></i><span>#E3C4B5</span></div>
+        <div class="chip"><i style="background:#F0E4DA"></i><span>#F0E4DA</span></div>
+        <div class="chip"><i style="background:#FF5A3C"></i><span>#FF5A3C</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="foot">
+    <span><span class="dot"></span>DeepSeek Color · Palette System</span>
+    <span>github.com/78tyih/deepseek-color</span>
+  </div>
+</div>
+</body>
+</html>

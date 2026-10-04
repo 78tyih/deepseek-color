@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>07 · Perform TV — DeepSeek Color</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;1,400&family=Inter:wght@400;500&family=Noto+Serif+SC:wght@400;500;600&family=Noto+Sans+SC:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/base.css">
+<style>
+  body { background: var(--night); color: var(--paper-on-night); }
+  .nav { display:flex; justify-content:space-between; align-items:center; padding:28px 40px; }
+  .nav-logo { font-family:var(--font-display); font-size:22px; font-weight:600; }
+  .nav-links { display:flex; gap:36px; font-size:14px; }
+  .nav-links a { color:rgba(237,234,228,.6); text-decoration:none; }
+  .hero { text-align:center; padding: 60px 24px 0; position:relative; }
+  .hero .sv-display { margin: 28px 0 20px; }
+  .hero p { color: rgba(237,234,228,.6); max-width: 52ch; margin: 0 auto; }
+  .tv-stage {
+    margin: 70px auto 0; max-width: 1100px; aspect-ratio: 16/9;
+    background: var(--night-2); border-radius: 28px;
+    border: 1px solid var(--hairline-dark);
+    display:flex; align-items:flex-end; padding:36px; position:relative;
+  }
+  .tv-stage::after {
+    content:""; position:absolute; inset:-24px; border-radius:40px;
+    border:1px solid var(--hairline-dark); opacity:.4; pointer-events:none;
+  }
+  .spec-rows { max-width: 1100px; margin: 100px auto 0; padding: 0 24px; }
+  .sv-row { border-color: var(--hairline-dark); }
+  .sv-row .num { font-family: var(--font-display); font-size: clamp(2rem,4vw,3.2rem); letter-spacing:-0.02em; }
+  .sv-row .desc { color: rgba(237,234,228,.55); font-size: 14px; max-width: 36ch; text-align:right; }
+  .accent-word { font-style: italic; color: var(--accent); }
+</style>
+</head>
+<body>
+<nav class="nav">
+  <div class="nav-logo">Perform<span style="color:var(--accent)">.</span>TV</div>
+  <div class="nav-links"><a href="#">画质</a><a href="#">音效</a><a href="#">规格</a><a href="#">购买</a></div>
+  <a class="sv-btn sv-btn--accent" href="#">立即预订</a>
+</nav>
+
+<section class="hero">
+  <div class="sv-kicker" style="justify-content:center; color:rgba(237,234,228,.55);">01 — 2026 旗舰</div>
+  <h1 class="sv-display">黑暗中的<br><span class="accent-word">每一帧</span>都算数</h1>
+  <p>Perform TV X1 · 4K 144Hz Mini-LED，2304 分区控光，杜比视界 IQ。为电影而生，为游戏而狂。</p>
+  <div class="tv-stage">
+    <span class="sv-micro" style="color:rgba(237,234,228,.45);">65" · 77" · 85" — CINEMA MODE</span>
+  </div>
+</section>
+
+<section class="spec-rows">
+  <div class="sv-kicker" style="color:rgba(237,234,228,.55); margin-bottom:40px;">02 — 关键规格</div>
+  <div class="sv-row"><span class="num">2304</span><span class="desc">Mini-LED 独立控光分区，黑场纯净不漏光</span></div>
+  <div class="sv-row"><span class="num">144<span style="font-size:.45em">Hz</span></span><span class="desc">原生高刷 + VRR，主机游戏零撕裂</span></div>
+  <div class="sv-row"><span class="num">2000<span style="font-size:.45em">nits</span></span><span class="desc">峰值亮度，HDR 高光层次分明</span></div>
+  <div class="sv-row"><span class="num">98<span style="font-size:.45em">%</span></span><span class="desc">DCI-P3 色域覆盖，ΔE &lt; 1 出厂校色</span></div>
+  <div style="text-align:center; padding: 80px 0 100px;">
+    <a class="sv-btn sv-btn--accent" href="#" style="font-size:15px; padding:16px 36px;">¥8,999 起 · 预约首发</a>
+  </div>
+</section>
+</body>
+</html>

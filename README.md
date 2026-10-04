@@ -6,6 +6,8 @@
 
 适配官网、金融、AI 产品等场景，可直接安装为 AI Agent Skill。
 
+**在线预览（GitHub Pages，无需下载）：** [交互展示页](https://78tyih.github.io/deepseek-color/showcase.html)（五色卡 + 八套换肤在线试穿）· [首屏骨架](https://78tyih.github.io/deepseek-color/templates/01-hero-editorial.html) · [色卡规范页 P1](https://78tyih.github.io/deepseek-color/palettes/p1-deep-dive-blue.html) —— 12 个骨架与 5 张色卡页全部可在线打开，链接格式 `https://78tyih.github.io/deepseek-color/templates/<文件名>`。
+
 ## 五大色卡（DeepSeek Color 色系）
 
 ![五大色卡](templates/palettes/banner-palettes.png)
@@ -94,6 +96,15 @@ deepseek-color/
 - **Workbuddy**：复制到 `~/.workbuddy/skills/`
 
 之后对 agent 说「用 DeepSeek Color 做一页官网」「深夜机房色卡的定价页」即可自动触发。
+
+## 四问速览
+
+| 问 | 答 |
+|---|---|
+| **解决什么问题** | AI 生成的网页普遍「AI 感过强」——花哨渐变、玻璃拟态、霓虹配色。本技能把配色纪律（70/25/5）与杂志排版规则写成 Agent 可执行的规范 |
+| **什么场景 → 什么结果** | 「用深潜蓝做官网首屏」→ 克制的专业页；「换午夜机房色卡」→ 暗色科技页；已有页面改 `--accent` 一个变量全站换色 |
+| **什么结构** | `SKILL.md`（触发+规则）→ `references/tokens.md`（变量/字体阶梯/间距）→ `assets/base.css` + `templates/*.html`（零依赖骨架），换肤 = 变量覆盖 |
+| **能复用什么** | ① 整包复制进 Kimi/Codex/Claude Code/WorkBuddy skills 目录即用；② 12 个单文件骨架改文案即成品；③ 70/25/5 配色纪律不绑定 DeepSeek 色系，任何色系可套 |
 
 ## 说明
 
